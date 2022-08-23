@@ -14,10 +14,13 @@
 对于代码的变更需要有文档进行说明改了哪些地方。
 
 ## 正文
-### 效果图
-![1](https://cdn.jsdelivr.net/gh/fromann/CDN@main/img/githubpic/sendcard/1.png)
-Secrets/Action Key表
-![2](https://cdn.jsdelivr.net/gh/fromann/CDN@main/img/githubpic/sendcard/2.png)
+### 效果
+#### Wechat演示
+![1](https://raw.githubusercontent.com/fromann/CDN/main/img/githubpic/sendcard/1.png)
+
+#### Secrets/Action Key表
+
+![2](https://raw.githubusercontent.com/fromann/CDN/main/img/githubpic/sendcard/2.png)
 ### 教程 coming soon
 ## 注意事项
 > 生日的日期格式是：`05-20`，纪念日的格式是 `2022-08-09`，请注 意区分。城市请写到地级市，比如：`北京`，`广州`，`承德`
