@@ -2,7 +2,7 @@
 
 ## [开源作者指路](https://github.com/rxrw/daily_morning)
 
-## 正文
+## 正[1](./LICENSE)
 这个教程优点：
 - 不懂编程的朋友可以很快入门的时候，
 - 避免服务器搭建
