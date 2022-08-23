@@ -1,56 +1,23 @@
-# 每日早安推送
+# 微信每日早安推送
 
-## [开源作者指路](https://github.com/rxrw/daily_morning)
+## 开源协议 [GNU GPLv3](./LICENSE)
 
-## 正[1](./LICENSE)
-这个教程优点：
-- 不懂编程的朋友可以很快入门的时候，
-- 避免服务器搭建
-- 避免定时任务
-- 避免接触代码
-- 可以用 Github Actions 来白嫖。。
-### 个人效果图
-本仓库在原仓库代码基础上进行更改
-效果图
+>[General Public License v3.0 ](./LICENSE)
+允许个人使用、商业使用、专利授权，允许复制、分发、修改，并且作者不承担用户使用的一切后果。但是它有很多限制：
+- 必须开源
+一旦使用了这个协议，如果他人想要进行分发、修改，那么他们修改后的源代码也必须开源。这是开源的核心保障，如果没有这条规定，就没有人愿意持续公开自己的源码了。
+- 保留协议和版权
+保留对协议和版权的叙述。
+- 不允许更换协议
+如果有人修改了一些源码，觉得自己改得还挺多的，想要换一个MIT或者什么协议，这是不允许的。一旦最原始的源码使用了GPL，其衍生的所有代码都必须使用GPL。这也是开源保障之一
+- 声明变更
+对于代码的变更需要有文档进行说明改了哪些地方。
+
+## 正文
+### 效果图
 ![1](https://cdn.jsdelivr.net/gh/fromann/CDN@main/img/githubpic/sendcard/1.png)
 Secrets/Action Key表
 ![2](https://cdn.jsdelivr.net/gh/fromann/CDN@main/img/githubpic/sendcard/2.png)
-### 原作者效果图
-效果如图。当然，文字是可以修改的。
-![5e72e89fd7ff692a0bfa62010517c0c](https://user-images.githubusercontent.com/9566402/183242263-c93517a2-5377-435d-8386-8d47252c9e07.jpg)
-
-首先，按图搜索，测试号，进来之后微信扫码登录！
-![cf7dbd4502df44765ed3506f55caea5](https://user-images.githubusercontent.com/9566402/183242272-134e37e7-718d-42dd-9ed7-fca2810e94e6.png)
-
-按图点击 Use this template，创建到自己的仓库下！
-![e6581c43572b00b12c1a82ca8d7178b](https://user-images.githubusercontent.com/9566402/183242340-2ef26c63-1ca1-420e-abd4-8672c25d61c9.png)
-
-按下图，创建模板，设置变量，把微信公众平台上的各种字符串按说明创建到 GitHub -> Settings -> Secrets -> Actions 中。
-![71bf9d11a876d23ef0f0728645a8ba0](https://user-images.githubusercontent.com/9566402/183242301-fd6ab30e-bfe5-4245-b2a9-f690184db307.png)
-![381e8ee4a7c5ec6b8c09719f2c7e486](https://user-images.githubusercontent.com/9566402/183242295-4dcf06bb-2083-4883-8745-0af753ca805c.png)
-![48c60750cec7adc546e0ad99e3082b3](https://user-images.githubusercontent.com/9566402/183242320-18500adc-14e5-4522-a3ad-ae19cc4479bf.png)
-
-启用自己项目下的 Action！
-![30a5b1b2b06ba4a40a3d8ef01652409](https://user-images.githubusercontent.com/9566402/183242334-9943c538-ba3d-4d01-8377-d040143b7560.png)
-
-如果运行出现错误，按以下方法可以看到错误，在这里 issue 提问也可以，在小红书群里问也可以
-![6b0da6f44e18c2bfd94910c377d13e6](https://user-images.githubusercontent.com/9566402/183242349-1aa5ada6-2ee7-4cf9-a542-4b2dad88b8fe.png)
-
-启用后可以直接运行，看看女朋友的手机有没有收到推送吧！
-这个定时任务是每天早晨8点推送，如果会编程的同学可以自己自定义一些东西～
-
-图中的操作，除了各种英文字符串不一样，模板消息中的中文不一样，其他的应该都是一样的，不然程序跑不通的～
-
-Github 的右上角可以点击 star 给我点鼓励吧亲
-
-小红书上点点关注，点点赞，有什么好玩的东西可以at我，我来教你们做
-
-ps. 有一些注意事项在此补充
-
-1. 第一次登录微信公众平台测试号给的 app secret 是错误的，刷新一下页面即可
-2. 生日的日期格式是：`05-20`，纪念日的格式是 `2022-08-09`，请注意区分。城市请写到地级市，比如：`北京`，`广州`，`承德`
-3. 变量中粘贴的各种英文字符串不要有空格，不要有换行，除了模板之外都没有换行
-4. Github Actions 的定时任务，在 workflow 的定义是 `0 0 * * *`，是 UTC 时间的零点，北京时间的八点。但是由于 Github 同一时间任务太多，因此会有延迟
-5. 我会偶尔优化一下代码，emm 但现在我自己在做一个完整的平台项目，想让大家更加便捷地上手
-
-但那个平台还没完全做好，我要抑制住我赚钱（不是）的欲望。。
+### 教程 coming soon
+## 注意事项
+> 生日的日期格式是：`05-20`，纪念日的格式是 `2022-08-09`，请注 意区分。城市请写到地级市，比如：`北京`，`广州`，`承德`
