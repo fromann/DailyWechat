@@ -8,6 +8,7 @@ import random
 import json
 
 today = datetime.now()
+cha=timedelta(hours=8) #8小时差值
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 template_id = os.environ["TEMPLATE_ID"]
@@ -40,38 +41,36 @@ def get_weather(city):
 
 
 def get_count(born_date):
-    delta = today - datetime.strptime(born_date, "%Y-%m-%d")
+    delta = today - datetime.strptime(born_date, "%Y-%m-%d")+cha
     return delta.days
 
 
 def get_birthday(birthday):
-    nextdate = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
+    nextdate = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")-cha
     if nextdate < datetime.now():
         nextdate = nextdate.replace(year=nextdate.year + 1)
     return (nextdate - today).days
 
+
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
-
-
 
 f = open("./users_info.json", encoding="utf-8")
 js_text = json.load(f)
 f.close()
 data = js_text['data']
-num=0
+num = 0
 for user_info in data:
-
     born_date = user_info['born_date']
     birthday = born_date[5:]
-    city=user_info['city']
-    user_id=user_info['user_id']
+    city = user_info['city']
+    user_id = user_info['user_id']
     wea, tem_high, tem_low, tem_city = get_weather(city)
 
     data = dict()
     data['time'] = {'value': get_time(), 'color': get_random_color()}
     data['words'] = {'value': get_words(), 'color': get_random_color()}
-    
+
     data['weather'] = {'value': wea, 'color': '#002fa4'}
     data['city'] = {'value': tem_city, 'color': get_random_color()}
     data['tem_high'] = {'value': tem_high, 'color': '#470024'}
@@ -81,5 +80,5 @@ for user_info in data:
 
     res = wm.send_template(user_id, template_id, data)
     print(res)
-    num+=1
+    num += 1
 print(f"卡片分发完成，共计{num}人")
