@@ -1,5 +1,7 @@
 # 微信每日早安推送
 
+    要想实现此仓库功能需要修改少量代码，若未曾了解过Python请不要复刻仓库
+
 ## 开源协议 [GNU GPLv3](./LICENSE)
 
 >[General Public License v3.0 ](./LICENSE)
@@ -9,18 +11,70 @@
 - 保留协议和版权
 保留对协议和版权的叙述。
 - 不允许更换协议
-如果有人修改了一些源码，觉得自己改得还挺多的，想要换一个MIT或者什么协议，这是不允许的。一旦最原始的源码使用了GPL，其衍生的所有代码都必须使用GPL。这也是开源保障之一
+一旦最原始的源码使用了GPL，其衍生的所有代码都必须使用GPL。这也是开源保障之一
 - 声明变更
 对于代码的变更需要有文档进行说明改了哪些地方。
 
 ## 正文
 ### 效果
-#### Wechat演示
 ![1](https://raw.githubusercontent.com/fromann/CDN/main/img/githubpic/sendcard/1.png)
-
+### 思路
+本项目实现单公众号对多用户发送模板信息
 #### Secrets/Action Key表
-
+将公众号的`APP_ID` , `APP_SECRET` , `Template_ID`填入Key表
 ![2](https://raw.githubusercontent.com/fromann/CDN/main/img/githubpic/sendcard/2.png)
-### 教程 coming soon
+#### 用户信息文件
+用户信息文件储存于json文件中，实现用户信息的差异化储存，便于差异化分发
+
+    建议使用**名字首字母小写全拼**作为名字，因为开源平台也要保护好资料
+~~~json
+{
+  "data": [
+    {
+      "user_name": "用户1的名字",
+      "user_id": "用户1的ID",
+      "born_date": "用户1的出生日期（注意格式）",
+      "city": "用户1城市"
+    },
+    {
+      "user_name": "用户2的名字",
+      "user_id": "用户2的ID",
+      "born_date": "用户2的出生日期（注意格式）",
+      "city": "用户2的城市" 
+    }
+    ]
+}
+~~~
+以上是基本结构
+若想新增用户可以按照以下格式花括号（`{}`）之间添加用`,`分割
+~~~json
+{
+  "user_name": "用户2的名字",
+  "user_id": "用户2的ID",
+  "born_date": "用户2的出生日期（注意格式）",
+  "city": "用户2的城市" 
+}
+~~~
+#### 微信模板
+
+~~~txt
+{{time.DATA}}
+
+φ(゜▽゜*)♪{{name.DATA}}小盆友
+
+坐标城市：{{city.DATA}}o(〃'▽'〃)o
+当前天气：{{weather.DATA}} ヾ(≧▽≦*)o
+当前风向：{{wind.DATA}}( •̀ ω •́ )✧
+今日温度：{{tem_low.DATA}}℃~{{tem_high.DATA}}℃ ↖( •̀ ω •́ )↗
+空气质量：{{air.DATA}}(✿◡‿◡)
+
+庆祝自己在世界上第{{born_days.DATA}}天(❁´◡`❁)
+距离下次生日还有{{birthday_left.DATA}}天╰(*°▽°*)╯
+
+{{words.DATA}}
+~~~
 ## 注意事项
-> 生日的日期格式是：`05-20`，纪念日的格式是 `2022-08-09`，请注 意区分。城市请写到地级市，比如：`北京`，`广州`，`承德`
+
+- 生日的日期格式是：`05-20`，
+- 纪念日的格式是 `2022-08-09`，
+- 城市请写到地级市，比如：`北京`，`济南`，`承德`
