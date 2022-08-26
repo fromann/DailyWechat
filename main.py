@@ -1,24 +1,24 @@
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, timedelta
 import math
 from wechatpy import WeChatClient
-from wechatpy.client.api import WeChatMessage, WeChatTemplate
+from wechatpy.client.api import WeChatMessage
 import requests
 import os
 import random
 import json
 
-today = datetime.now()+timedelta(hours=8)
-app_id = os.environ["APP_ID"]
-app_secret = os.environ["APP_SECRET"]
-template_id = os.environ["TEMPLATE_ID"]
+nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区
+today = datetime.strptime(str(today.date()), "%Y-%m-%d")
 
+app_id = os.getenv["APP_ID"]
+app_secret = os.getenv["APP_SECRET"]
+template_id = os.getenv["TEMPLATE_ID"]
 
 def get_time():
-    BJ_tz = timezone(timedelta(hours=8), 'Asia/Shanghai')
     dictDate = {'Monday': '星期一', 'Tuesday': '星期二', 'Wednesday': '星期三', 'Thursday': '星期四',
                 'Friday': '星期五', 'Saturday': '星期六', 'Sunday': '星期天'}
-    a = dictDate[datetime.now(BJ_tz).strftime('%A')]
-    return datetime.now(BJ_tz).strftime("%Y年%m月%d日 %H时%M分 ") + a
+    a = dictDate[nowtime.strftime('%A')]
+    return nowtime.strftime("%Y年%m月%d日 %H时%M分 ")+ a
 
 
 def get_words():
@@ -45,11 +45,10 @@ def get_count(born_date):
 
 
 def get_birthday(birthday):
-    nextdate = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
-    if nextdate < (datetime.now()+timedelta(8)):
+    nextdate = datetime.strptime(str(today.year) + "-" + birthday, "%Y-%m-%d")
+    if nextdate < today:
         nextdate = nextdate.replace(year=nextdate.year + 1)
     return (nextdate - today).days
-
 
 client = WeChatClient(app_id, app_secret)
 wm = WeChatMessage(client)
