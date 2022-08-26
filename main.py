@@ -10,9 +10,9 @@ import json
 nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")
 
-app_id = os.getenv["APP_ID"]
-app_secret = os.getenv["APP_SECRET"]
-template_id = os.getenv["TEMPLATE_ID"]
+app_id = os.getenv("APP_ID")
+app_secret = os.getenv("APP_SECRET")
+template_id = os.getenv("TEMPLATE_ID")
 
 def get_time():
     dictDate = {'Monday': '星期一', 'Tuesday': '星期二', 'Wednesday': '星期三', 'Thursday': '星期四',
