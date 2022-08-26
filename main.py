@@ -36,7 +36,7 @@ def get_weather(city):
     url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
     res = requests.get(url).json()
     weather = res['data']['list'][0]
-    return weather['weather'], math.floor(weather['high']), math.floor(weather['low']), weather['city']
+    return weather['weather'], math.floor(weather['high']), math.floor(weather['low']), weather['city'],weather['airQuality'],weather['wind']
 
 
 def get_count(born_date):
@@ -63,7 +63,7 @@ for user_info in data:
     birthday = born_date[5:]
     city = user_info['city']
     user_id = user_info['user_id']
-    wea, tem_high, tem_low, tem_city = get_weather(city)
+    wea, tem_high, tem_low, tem_city, air, wind= get_weather(city)
 
     data = dict()
     data['time'] = {'value': get_time(), 'color':'#470024'}
@@ -75,6 +75,8 @@ for user_info in data:
     data['tem_low'] = {'value': tem_low, 'color': '#01847F'}
     data['born_days'] = {'value': get_count(born_date), 'color': get_random_color()}
     data['birthday_left'] = {'value': get_birthday(birthday), 'color': get_random_color()}
+    data['air'] = {'value': air, 'color': get_random_color()}
+    data['wind'] = {'value': wind, 'color': get_random_color()}
 
     res = wm.send_template(user_id, template_id, data,'https://froan.cn')
     print(res)
