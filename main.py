@@ -7,8 +7,7 @@ import os
 import random
 import json
 
-today = datetime.now()
-cha=timedelta(hours=8) #8小时差值
+today = datetime.now()+timedelta(hours=8)
 app_id = os.environ["APP_ID"]
 app_secret = os.environ["APP_SECRET"]
 template_id = os.environ["TEMPLATE_ID"]
@@ -41,13 +40,13 @@ def get_weather(city):
 
 
 def get_count(born_date):
-    delta = today - datetime.strptime(born_date, "%Y-%m-%d")+cha
+    delta = today - datetime.strptime(born_date, "%Y-%m-%d")
     return delta.days
 
 
 def get_birthday(birthday):
-    nextdate = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")-cha
-    if nextdate < datetime.now():
+    nextdate = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
+    if nextdate < (datetime.now()+timedelta(8)):
         nextdate = nextdate.replace(year=nextdate.year + 1)
     return (nextdate - today).days
 
@@ -68,17 +67,18 @@ for user_info in data:
     wea, tem_high, tem_low, tem_city = get_weather(city)
 
     data = dict()
-    data['time'] = {'value': get_time(), 'color': get_random_color()}
+    data['time'] = {'value': get_time(), 'color':'#470024'}
     data['words'] = {'value': get_words(), 'color': get_random_color()}
 
     data['weather'] = {'value': wea, 'color': '#002fa4'}
     data['city'] = {'value': tem_city, 'color': get_random_color()}
-    data['tem_high'] = {'value': tem_high, 'color': '#470024'}
+    data['tem_high'] = {'value': tem_high, 'color': '#D44848'}
     data['tem_low'] = {'value': tem_low, 'color': '#01847F'}
     data['born_days'] = {'value': get_count(born_date), 'color': get_random_color()}
     data['birthday_left'] = {'value': get_birthday(birthday), 'color': get_random_color()}
 
-    res = wm.send_template(user_id, template_id, data)
+    res = wm.send_template(user_id, template_id, data,'https://froan.cn')
     print(res)
     num += 1
-print(f"卡片分发完成，共计{num}人")
+res = wm.send_text('oEqYm6sOo2VdJdl4dGh40OrYYrKM', f'共计分发{num}卡片信息')
+print(res)
