@@ -8,7 +8,7 @@ import random
 import json
 
 nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区
-today = datetime.strptime(str(today.date()), "%Y-%m-%d")
+today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")
 
 app_id = os.getenv["APP_ID"]
 app_secret = os.getenv["APP_SECRET"]
@@ -63,6 +63,8 @@ for user_info in data:
     birthday = born_date[5:]
     city = user_info['city']
     user_id = user_info['user_id']
+    name=' 【'+user_info['user_name'].upper()+'】 '
+    
     wea, tem_high, tem_low, tem_city, air, wind= get_weather(city)
 
     data = dict()
@@ -77,7 +79,8 @@ for user_info in data:
     data['birthday_left'] = {'value': get_birthday(birthday), 'color': get_random_color()}
     data['air'] = {'value': air, 'color': get_random_color()}
     data['wind'] = {'value': wind, 'color': get_random_color()}
-
+    data['name'] = {'value': name, 'color': get_random_color()}
+    
     res = wm.send_template(user_id, template_id, data,'https://froan.cn')
     print(res)
     num += 1
