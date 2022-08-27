@@ -65,8 +65,9 @@
 坐标城市：{{city.DATA}}o(〃'▽'〃)o
 当前天气：{{weather.DATA}} ヾ(≧▽≦*)o
 当前风向：{{wind.DATA}}( •̀ ω •́ )✧
-今日温度：{{tem_low.DATA}}℃~{{tem_high.DATA}}℃ ↖( •̀ ω •́ )↗
+今日温度：{{tem_low.DATA}}℃~{{tem_high.DATA}}℃ ( •̀ ω •́ )
 空气质量：{{air.DATA}}(✿◡‿◡)
+紫外线强度：{{uv.DATA}}(oﾟvﾟ)ノ
 
 庆祝自己在世界上第{{born_days.DATA}}天(❁´◡`❁)
 距离下次生日还有{{birthday_left.DATA}}天╰(*°▽°*)╯

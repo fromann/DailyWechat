@@ -33,10 +33,10 @@ def get_random_color():
 
 
 def get_weather(city):
-    url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
+    url = "https://v0.yiketianqi.com/api?unescape=1&version=v91&appid=43656176&appsecret=I42og6Lm&city=" + city
     res = requests.get(url).json()
-    weather = res['data']['list'][0]
-    return weather['weather'], math.floor(weather['high']), math.floor(weather['low']), weather['city'],weather['airQuality'],weather['wind']
+    weather = res['data'][0]
+    return weather
 
 
 def get_count(born_date):
@@ -65,21 +65,57 @@ for user_info in data:
     user_id = user_info['user_id']
     name=' 【'+user_info['user_name'].upper()+'】 '
     
-    wea, tem_high, tem_low, tem_city, air, wind= get_weather(city)
-
+    weather= get_weather(city)
+#, , ,,,,
     data = dict()
-    data['time'] = {'value': get_time(), 'color':'#470024'}
-    data['words'] = {'value': get_words(), 'color': get_random_color()}
-
-    data['weather'] = {'value': wea, 'color': '#002fa4'}
-    data['city'] = {'value': tem_city, 'color': get_random_color()}
-    data['tem_high'] = {'value': tem_high, 'color': '#D44848'}
-    data['tem_low'] = {'value': tem_low, 'color': '#01847F'}
-    data['born_days'] = {'value': get_count(born_date), 'color': get_random_color()}
-    data['birthday_left'] = {'value': get_birthday(birthday), 'color': get_random_color()}
-    data['air'] = {'value': air, 'color': get_random_color()}
-    data['wind'] = {'value': wind, 'color': get_random_color()}
-    data['name'] = {'value': name, 'color': get_random_color()}
+    data['time'] = {
+        'value': get_time(), 
+        'color':'#470024'
+        }
+    data['words'] = {
+        'value': get_words(), 
+        'color': get_random_color()
+        }
+    data['weather'] = {
+        'value': weather['wea'], 
+        'color': '#002fa4'
+        }
+    data['city'] = {
+        'value': city, 
+        'color': get_random_color()
+        }
+    data['tem_high'] = {
+        'value': math.floor(weather['tem1']), 
+        'color': '#D44848'
+        }
+    data['tem_low'] = {
+        'value': math.floor(weather['tem2']), 
+        'color': '#01847F'
+        }
+    data['born_days'] = {
+        'value': get_count(born_date), 
+        'color': get_random_color()
+        }
+    data['birthday_left'] = {
+        'value': get_birthday(birthday), 
+        'color': get_random_color()
+        }
+    data['air'] = {
+        'value': weather['air_level'], 
+        'color': get_random_color()
+        }
+    data['wind'] = {
+        'value': weather['win'][0], 
+        'color': get_random_color()
+        }
+    data['name'] = {
+        'value': name, 
+        'color': get_random_color()
+        }
+    data['uv'] = {
+        'value': weather['uvDescription'], 
+        'color': get_random_color()
+        }
     
     res = wm.send_template(user_id, template_id, data,'https://froan.cn')
     print(res)
