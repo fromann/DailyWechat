@@ -84,12 +84,12 @@ for user_info in data:
         'value': city, 
         'color': get_random_color()
         }
-    data['tem_high'] = {
-        'value': math.floor(weather['tem1']), 
+        data['tem_high'] = {
+        'value': weather['tem1'], 
         'color': '#D44848'
         }
     data['tem_low'] = {
-        'value': math.floor(weather['tem2']), 
+        'value': weather['tem2'], 
         'color': '#01847F'
         }
     data['born_days'] = {
