@@ -7,7 +7,7 @@ import os
 import random
 import json
 
-nowtime = datetime.utcnow() + timedelta(hours=8)  # 东八区
+nowtime = datetime.utcnow() + timedelta(hours=8)  
 today = datetime.strptime(str(nowtime.date()), "%Y-%m-%d")
 
 app_id = os.getenv("APP_ID")
@@ -20,24 +20,20 @@ def get_time():
     a = dictDate[nowtime.strftime('%A')]
     return nowtime.strftime("%Y年%m月%d日 %H时%M分 ")+ a
 
-
 def get_words():
     words = requests.get("https://api.shadiao.pro/chp")
     if words.status_code != 200:
         return get_words()
     return words.json()['data']['text']
 
-
 def get_random_color():
     return "#%06x" % random.randint(0, 0xFFFFFF)
-
 
 def get_weather(city):
     url = "https://v0.yiketianqi.com/api?unescape=1&version=v91&appid=43656176&appsecret=I42og6Lm&city=" + city
     res = requests.get(url).json()
     weather = res['data'][0]
     return weather
-
 
 def get_count(born_date):
     delta = today - datetime.strptime(born_date, "%Y-%m-%d")
@@ -66,7 +62,7 @@ for user_info in data:
     name=' 【'+user_info['user_name'].upper()+'】 '
     
     weather= get_weather(city)
-#, , ,,,,
+
     data = dict()
     data['time'] = {
         'value': get_time(), 
@@ -84,7 +80,7 @@ for user_info in data:
         'value': city, 
         'color': get_random_color()
         }
-        data['tem_high'] = {
+    data['tem_high'] = {
         'value': weather['tem1'], 
         'color': '#D44848'
         }
