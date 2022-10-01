@@ -1,5 +1,4 @@
-from datetime import date, datetime, timedelta
-import math
+from datetime import datetime, timedelta
 from wechatpy import WeChatClient
 from wechatpy.client.api import WeChatMessage
 import requests
@@ -59,7 +58,7 @@ for user_info in data:
     birthday = born_date[5:]
     city = user_info['city']
     user_id = user_info['user_id']
-    name=' 【'+user_info['user_name'].upper()+'】 '
+    name=user_info['user_name'].upper()
     
     weather= get_weather(city)
 
@@ -113,7 +112,7 @@ for user_info in data:
         'color': get_random_color()
         }
     
-    res = wm.send_template(user_id, template_id, data,'https://froan.cn')
+    res = wm.send_template(user_id, template_id, data)
     print(res)
     num += 1
 print(num)
