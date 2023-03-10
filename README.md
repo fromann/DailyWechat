@@ -1,8 +1,14 @@
 # 微信每日早安推送
 
     要想实现此仓库功能需要修改少量代码，若未曾了解过Python请不要复刻仓库
+<<<<<<< HEAD
 [![墨菲安全](https://s.murphysec.com/badge/fromann/DailyWechat.svg)
 本项目已通过**墨菲安全**检测](https://www.murphysec.com/p/fromann/DailyWechat)
+=======
+    
+    [![墨菲安全](https://s.murphysec.com/badge/fromann/DailyWechat.svg)
+    本项目已通过**墨菲安全**检测](https://www.murphysec.com/p/fromann/DailyWechat)
+>>>>>>> 044a5ba84b72f2efe88b542bbc88afb82c89362e
 
 ## 开源协议 [GNU GPLv3](./LICENSE)
 
