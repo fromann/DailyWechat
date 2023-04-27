@@ -27,15 +27,15 @@
 
 ## 正文
 ### 效果
-![1](./../../pic/show.jpg)
+![1](https://github.com/fromann/DailyWechat/blob/master/pic/show.jpg)
 ### 思路
 本项目实现单公众号对多用户发送模板信息
 #### Secrets/Action Key表
 
-![步骤](./../../pic/buzhou.png)
+![步骤](https://github.com/fromann/DailyWechat/blob/master/pic/buzhou.png)
 
 将公众号的`APP_ID` , `APP_SECRET` , `Template_ID`，`WEATHER_API_KEY `填入Key表
-![2](./../../pic/secret.png)
+![2](https://github.com/fromann/DailyWechat/blob/master/pic/secret.png)
 
 #### 用户信息文件
 用户信息文件储存于json文件中，实现用户信息的差异化储存，便于差异化分发
@@ -103,10 +103,10 @@
 - 打开并注册**[心知天气 - 天气数据API接口(seniverse.com)](https://link.zhihu.com/?target=https%3A//lbs.amap.com/)**
 - 点击添加产品选择**免费版**获取 API Key私钥
 
-![img](./../../pic/weather.png)
+![img](https://github.com/fromann/DailyWechat/blob/master/pic/weather.png)
 
 - 将APIKey 添加到`WEATHER_API_KEY `填入Key表
-  ![2](./../../pic/secret.png)
+  ![2](https://github.com/fromann/DailyWechat/blob/master/pic/secret.png)
 
 - 注意本次更新也要更新json文件 城市只能支持地级市并且全拼
 
