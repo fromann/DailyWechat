@@ -100,7 +100,7 @@ if __name__ == '__main__':
             'color': get_random_color()
         }
         data['wind'] = {
-            'value': weather['南'],
+            'value': weather['wind_direction'],
             'color': get_random_color()
         }
         data['name'] = {
