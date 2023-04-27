@@ -20,9 +20,10 @@ jobs:
       with:
         python-version: '3.x'
         architecture: 'x64'
-    - run: pip install -r ./requirements.txt && python ./main.py
+    - run: pip install --upgrade pip && pip install -r ./requirements.txt && python ./main.py
 
     env:
       APP_ID: ${{ secrets.APP_ID }}
       APP_SECRET: ${{ secrets.APP_SECRET }}
       TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
+      WEATHER_API_KEY: ${{ secrets.WEATHER_API_KEY }}

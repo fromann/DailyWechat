@@ -2,6 +2,10 @@
 
     要想实现此仓库功能需要修改少量代码，若未曾了解过Python请不要复刻仓库
 
+## 细节详见 底部更新内容
+
+> 2023.4.27更新 免费天气API失效更换高德地图API 详见更新日志↓↓↓
+
 
 
 ![墨菲安全](https://s.murphysec.com/badge/fromann/DailyWechat.svg)
@@ -23,12 +27,16 @@
 
 ## 正文
 ### 效果
-![1](https://raw.githubusercontent.com/fromann/CDN/main/img/githubpic/sendcard/1.png)
+![1](./pic/show.jpg)
 ### 思路
 本项目实现单公众号对多用户发送模板信息
 #### Secrets/Action Key表
-将公众号的`APP_ID` , `APP_SECRET` , `Template_ID`填入Key表
-![2](https://raw.githubusercontent.com/fromann/CDN/main/img/githubpic/sendcard/2.png)
+
+![步骤](./pic/buzhou.png)
+
+将公众号的`APP_ID` , `APP_SECRET` , `Template_ID`，`WEATHER_API_KEY `填入Key表
+![2](./pic/secret.png)
+
 #### 用户信息文件
 用户信息文件储存于json文件中，实现用户信息的差异化储存，便于差异化分发
 
@@ -72,8 +80,6 @@
 当前天气：{{weather.DATA}} ヾ(≧▽≦*)o
 当前风向：{{wind.DATA}}( •̀ ω •́ )✧
 今日温度：{{tem_low.DATA}}℃~{{tem_high.DATA}}℃ ( •̀ ω •́ )
-空气质量：{{air.DATA}}(✿◡‿◡)
-紫外线强度：{{uv.DATA}}(oﾟvﾟ)ノ
 
 庆祝自己在世界上第{{born_days.DATA}}天(❁´◡`❁)
 距离下次生日还有{{birthday_left.DATA}}天╰(*°▽°*)╯
@@ -84,3 +90,52 @@
 
 - 生日的日期格式是：`05-20`，
 - 纪念日的格式是 `2022-08-09`
+- 城市应为 `beijing`,`tianjin`,`jinan`
+
+## 更新日志
+
+### 2023.4.27
+
+由于天气接口失效，更换[心知天气 - 天气数据API接口(seniverse.com)](https://www.seniverse.com/)
+
+#### 高德地图API获取教程
+
+- 打开并注册**[心知天气 - 天气数据API接口(seniverse.com)](https://link.zhihu.com/?target=https%3A//lbs.amap.com/)**
+- 点击添加产品选择**免费版**获取 API Key私钥
+
+![img](./pic/weather.png)
+
+- 将APIKey 添加到`WEATHER_API_KEY `填入Key表
+  ![2](./pic/secret.png)
+
+- 注意本次更新也要更新json文件 城市只能支持地级市并且全拼
+
+  ~~~json
+  {
+    "user_name": "用户2的名字",
+    "user_id": "用户2的ID",
+    "born_date": "用户2的出生日期（注意格式）",
+    "city": "用户2的城市" //只能支持地级市
+  }
+  ~~~
+
+
+- 本次更新也要更新微信模板
+
+  ~~~txt
+  {{time.DATA}}
+  
+  φ(゜▽゜*)♪{{name.DATA}}小盆友
+  
+  坐标城市：{{city.DATA}}o(〃'▽'〃)o
+  当前天气：{{weather.DATA}} ヾ(≧▽≦*)o
+  当前风向：{{wind.DATA}}( •̀ ω •́ )✧
+  今日温度：{{tem_low.DATA}}℃~{{tem_high.DATA}}℃ ( •̀ ω •́ )
+  
+  庆祝自己在世界上第{{born_days.DATA}}天(❁´◡`❁)
+  距离下次生日还有{{birthday_left.DATA}}天╰(*°▽°*)╯
+  
+  {{words.DATA}}
+  ~~~
+
+  
