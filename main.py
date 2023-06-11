@@ -19,6 +19,7 @@ if __name__ == '__main__':
     f.close()
     data = js_text['data']
     num = 0
+    words=get_words()
     for user_info in data:
         born_date = user_info['born_date']
         birthday = born_date[5:]
@@ -34,7 +35,7 @@ if __name__ == '__main__':
             'color': '#470024'
         }
         data['words'] = {
-            'value': get_words(),
+            'value': words,
             'color': get_random_color()
         }
         data['weather'] = {
