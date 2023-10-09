@@ -4,13 +4,13 @@
       "user_name": "Froan",
       "user_id": "oEqYm6sOo2VdJdl4dGh40OrYYrKM",
       "born_date": "2003-02-03",
-      "city": "weifang"}
-//    },
-//    {
-//      "user_name": "王欣瑶",
-//      "user_id": "oEqYm6pD7oplyKNjPEQEshtnskt4",
-//      "born_date": "2002-07-20",
-//      "city": "weifang"
-//    }
+      "city": "weifang"
+    },
+    {
+      "user_name": "王欣瑶",
+      "user_id": "oEqYm6sOo2VdJdl4dGh40OrYYrKM",
+      "born_date": "2002-07-20",
+      "city": "weifang"
+    }
   ]
 }
