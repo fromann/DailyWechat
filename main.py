@@ -23,11 +23,6 @@ def get_words():
         return get_words()
     return words.json()['data']['text']
 
-
-def get_random_color():
-    return "#%06x" % random.randint(0, 0xFFFFFF)
-
-
 def get_weather(city, key):
     url = f"https://api.seniverse.com/v3/weather/daily.json?key={key}&location={city}&language=zh-Hans&unit=c&start=-1&days=5"
     res = requests.get(url).json()
@@ -35,7 +30,6 @@ def get_weather(city, key):
     weather = (res['results'][0])["daily"][0]
     city = (res['results'][0])["location"]["name"]
     return city, weather
-
 
 def get_count(born_date):
     delta = today - datetime.strptime(born_date, "%Y-%m-%d")
@@ -47,8 +41,6 @@ def get_birthday(birthday):
     if nextdate < today:
         nextdate = nextdate.replace(year=nextdate.year + 1)
     return (nextdate - today).days
-
-
 
 
 if __name__ == '__main__':
@@ -80,46 +72,16 @@ if __name__ == '__main__':
 
         wea_city,weather = get_weather(city,weather_key)
         data = dict()
-        data['time'] = {
-            'value': out_time,
-            'color': '#470024'
-        }
-        data['words'] = {
-            'value': words,
-            'color': get_random_color()
-        }
-        data['weather'] = {
-            'value': weather['text_day'],
-            'color': '#002fa4'
-        }
-        data['city'] = {
-            'value': wea_city,
-            'color': get_random_color()
-        }
-        data['tem_high'] = {
-            'value': weather['high'],
-            'color': '#D44848'
-        }
-        data['tem_low'] = {
-            'value': weather['low'],
-            'color': '#01847F'
-        }
-        data['born_days'] = {
-            'value': get_count(born_date),
-            'color': get_random_color()
-        }
-        data['birthday_left'] = {
-            'value': get_birthday(birthday),
-            'color': get_random_color()
-        }
-        data['wind'] = {
-            'value': weather['wind_direction'],
-            'color': get_random_color()
-        }
-        data['name'] = {
-            'value': name,
-            'color': get_random_color()
-        }
+        data['time'] = {'value': out_time}
+        data['words'] = {'value': words}
+        data['weather'] = {'value': weather['text_day']}
+        data['city'] = {'value': wea_city}
+        data['tem_high'] = {'value': weather['high']}
+        data['tem_low'] = {'value': weather['low']}
+        data['born_days'] = {'value': get_count(born_date)}
+        data['birthday_left'] = {'value': get_birthday(birthday)}
+        data['wind'] = {'value': weather['wind_direction']}
+        data['name'] = {'value': name}
 
         res = wm.send_template(user_id, template_id, data)
         print(res)

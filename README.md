@@ -4,6 +4,8 @@
 
 ## 细节详见 底部更新内容
 
+> 2023.10.9新规则运行导致部分功能失效
+> 
 > 2023.4.27更新 免费天气API失效更换心知天气API 详见更新日志↓↓↓
 
 ![墨菲安全](https://s.murphysec.com/badge/fromann/DailyWechat.svg)
@@ -91,6 +93,12 @@
 - 城市应为 `beijing`,`tianjin`,`jinan`
 
 ## 更新日志
+### 2023.10.09
+### 微信新规则详细
+>参考公告：关于规范公众号模板消息的再次公告 - 微信开放社区 https://developers.weixin.qq.com/community/develop/doc/000a2ae286cdc0f41a8face4c51801
+
+![img](pic/newissue.png)
+
 
 ### 2023.4.27
 
