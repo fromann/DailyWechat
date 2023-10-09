@@ -20,6 +20,9 @@ if __name__ == '__main__':
     data = js_text['data']
     num = 0
     words=get_words()
+    out_time=get_time()
+
+    print(words, out_time)
     for user_info in data:
         born_date = user_info['born_date']
         birthday = born_date[5:]
@@ -31,7 +34,7 @@ if __name__ == '__main__':
         wea_city,weather = get_weather(city,weather_key)
         data = dict()
         data['time'] = {
-            'value': get_time(),
+            'value': out_time,
             'color': '#470024'
         }
         data['words'] = {
