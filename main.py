@@ -3,7 +3,6 @@ from wechatpy.client.api import WeChatMessage
 import os
 import json
 from datetime import datetime, timedelta
-import random
 import requests
 
 nowtime = datetime.utcnow() + timedelta(hours=8)

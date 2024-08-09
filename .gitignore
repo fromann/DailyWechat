@@ -1,0 +1,10 @@
+# idea 目录
+.idea/
+
+#私人用户目录
+.users_info.json
+
+#虚拟环境
+envs/
+
+demo.py
