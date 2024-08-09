@@ -17,10 +17,11 @@ def get_time():
 
 
 def get_words():
-    words = requests.get("https://api.shadiao.pro/chp")
-    if words.status_code != 200:
+    words = requests.get("https://tenapi.cn/v2/yiyan?format=json").json()
+    print(words)
+    if words['code'] != 200:
         return get_words()
-    return words.json()['data']['text']
+    return words['data']['hitokoto']
 
 def get_weather(city, key):
     url = f"https://api.seniverse.com/v3/weather/daily.json?key={key}&location={city}&language=zh-Hans&unit=c&start=-1&days=5"
@@ -51,7 +52,7 @@ if __name__ == '__main__':
     client = WeChatClient(app_id, app_secret)
     wm = WeChatMessage(client)
 
-    f = open("./users_info.json", encoding="utf-8")
+    f = open("users_info.json", encoding="utf-8")
     js_text = json.load(f)
     f.close()
     data = js_text['data']

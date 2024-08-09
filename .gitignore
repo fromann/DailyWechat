@@ -2,7 +2,7 @@
 .idea/
 
 #私人用户目录
-.users_info.json
+users_info.json
 
 #虚拟环境
 envs/
